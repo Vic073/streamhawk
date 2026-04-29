@@ -16,7 +16,6 @@ The project follows a standard `src/` layout with a consolidated configuration s
 | [downloader.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/downloader.py) | yt-dlp Manager | Multi-threaded downloads and resume support |
 | [config.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/config.py) | Configuration | Dataclass-based settings management |
 | [cli.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/cli.py) | Terminal UI | Interactive prompts and batch processing |
-| [web.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/web.py) | Dashboard | Flask-based web interface |
 | [notifications.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/notifications.py) | Alerts | Desktop and webhook notifications |
 | [utils.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/utils.py) | Utilities | Logging, history, and string helpers |
 | [__init__.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/__init__.py) | Package Exports | Clean public API definition |
@@ -66,7 +65,6 @@ The project follows a standard `src/` layout with a consolidated configuration s
 
 ### 4. User Experience
 - Interactive CLI with colored output
-- Web dashboard for remote monitoring
 - Desktop notifications for completion/failure
 - History tracking for past extractions
 
@@ -78,9 +76,6 @@ streamhawk --imdb tt0816692
 
 # Via Python module
 python -m streamhawk.main --imdb tt0816692
-
-# Web dashboard
-streamhawk --web --port 8080
 ```
 
 ## Module Dependencies
