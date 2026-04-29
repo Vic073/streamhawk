@@ -225,5 +225,13 @@ async def main():
         sys.exit(1)
 
 
+def run():
+    """Sync wrapper for async main."""
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        pass
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    run()

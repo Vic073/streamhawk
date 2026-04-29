@@ -7,7 +7,7 @@ from pathlib import Path
 
 from .config import Config
 from .extractor import StreamInfo
-from .imdb import MovieMetadata
+from .metadata import MovieMetadata
 from .downloader import DownloadProgress
 from .utils import logger, extract_imdb_id, HistoryManager
 

@@ -45,8 +45,8 @@ dev = [
 "Source" = "https://github.com/Vic073/streamhawk"
 
 [project.scripts]
-streamhawk = "streamhawk.main:main"
-shawk = "streamhawk.main:main"
+streamhawk = "streamhawk.main:run"
+shawk = "streamhawk.main:run"
 
 [tool.setuptools.packages.find]
 where = ["src"]
