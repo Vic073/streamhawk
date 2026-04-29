@@ -43,7 +43,7 @@ cd streamhawk
 ```bash
 pip install .
 ```
-This will automatically install all core dependencies including Playwright, yt-dlp, and Flask.
+This will automatically install all core dependencies including Playwright and yt-dlp.
 
 3. **Install browser binaries:**
 ```bash
