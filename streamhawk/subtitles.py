@@ -6,7 +6,13 @@ import re
 from pathlib import Path
 from typing import List, Optional, Dict
 from dataclasses import dataclass
-import aiohttp
+
+try:
+    import aiohttp
+    HAS_AIOHTTP = True
+except ImportError:
+    HAS_AIOHTTP = False
+    aiohttp = None
 
 
 @dataclass
@@ -37,6 +43,9 @@ class SubtitleManager:
     async def download_subtitle(self, subtitle: Subtitle, 
                                 video_filename: str = None) -> Optional[str]:
         """Download a single subtitle file."""
+        if not HAS_AIOHTTP:
+            raise RuntimeError("aiohttp is required for subtitle download. Install: pip install aiohttp")
+        
         try:
             async with aiohttp.ClientSession(headers=self.headers) as session:
                 async with session.get(subtitle.url, timeout=30) as response:
