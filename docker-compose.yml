@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  streamhawk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: streamhawk
+    volumes:
+      - ./downloads:/downloads
+      - ./config.json:/app/config.json:ro
+    environment:
+      - STREAMHAWK_DOWNLOAD_DIR=/downloads
+      - STREAMHAWK_LOG_LEVEL=INFO
+    # For interactive mode, use: docker-compose run --rm streamhawk
+    stdin_open: true
+    tty: true
+    
+  streamhawk-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: streamhawk-dev
+    volumes:
+      - .:/app
+      - ./downloads:/downloads
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: pytest -v
+    
+  # Web dashboard service (if implemented)
+  streamhawk-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: streamhawk-web
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./downloads:/downloads
+      - ./config.json:/app/config.json:ro
+    environment:
+      - STREAMHAWK_MODE=web
+      - STREAMHAWK_PORT=8080
+    # Would need web dashboard implementation
+    # command: python -m streamhawk.web
+    
