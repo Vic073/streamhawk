@@ -16,7 +16,7 @@ setup(
     description="Automated HLS Stream Extractor with yt-dlp integration",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/streamhawk",
+    url="https://github.com/Vic073/streamhawk",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -40,7 +40,7 @@ setup(
     },
     keywords="hls, m3u8, video, download, yt-dlp, imdb, streaming",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/streamhawk/issues",
-        "Source": "https://github.com/yourusername/streamhawk",
+        "Bug Reports": "https://github.com/Vic073/streamhawk/issues",
+        "Source": "https://github.com/Vic073/streamhawk",
     },
 )

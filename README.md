@@ -35,8 +35,8 @@ An automated command-line tool that extracts HLS stream manifests (.m3u8) from t
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/project-horizon.git
-cd project-horizon
+git clone https://github.com/Vic073/streamhawk.git
+cd streamhawk
 ```
 
 2. **Install Python dependencies:**
