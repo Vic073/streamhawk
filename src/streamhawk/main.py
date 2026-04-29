@@ -218,13 +218,6 @@ def run():
             handle_batch_download(args.batch, config)
             return
         
-        # Handle web dashboard mode
-        if args.web:
-            print(f"[*] Starting web dashboard on http://localhost:{args.port}")
-            from .web import run_web
-            run_web(host='0.0.0.0', port=args.port, debug=True)
-            return
-        
         # Print banner for interactive modes
         print_banner()
         
