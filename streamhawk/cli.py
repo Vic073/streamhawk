@@ -229,6 +229,8 @@ Examples:
     parser.add_argument("--history", action="store_true", help="Show download history")
     parser.add_argument("--preview", action="store_true", help="Preview stream before download")
     parser.add_argument("--no-download", action="store_true", help="Extract URL only, don't download")
+    parser.add_argument("--web", action="store_true", help="Launch web dashboard")
+    parser.add_argument("--port", type=int, default=8080, help="Web dashboard port (default: 8080)")
     
     return parser.parse_args()
 
