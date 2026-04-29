@@ -3,7 +3,7 @@ Tests for M3U8 parser.
 """
 import unittest
 
-from streamhawk.m3u8_parser import M3U8Parser, M3U8Stream
+from streamhawk.hls import M3U8Parser, M3U8Stream
 
 
 class TestM3U8Parser(unittest.TestCase):

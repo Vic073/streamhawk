@@ -18,7 +18,7 @@ except ImportError:
 from .config import Config
 from .extractor import StreamExtractor
 from .downloader import YTDLPManager, DownloadProgress
-from .imdb import IMDbClient
+from .metadata import IMDbClient
 from .utils import extract_imdb_id, HistoryManager
 
 app = None
