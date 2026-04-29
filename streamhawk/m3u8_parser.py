@@ -31,8 +31,10 @@ class M3U8Stream:
         """Extract height from resolution string."""
         if not self.resolution:
             return 0
-        match = re.search(r'(\d+)', self.resolution)
-        return int(match.group(1)) if match else 0
+        match = re.search(r'(\d+)x(\d+)', self.resolution)
+        if match:
+            return int(match.group(2))
+        return 0
     
     @property
     def width(self) -> int:
