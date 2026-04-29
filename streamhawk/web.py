@@ -8,7 +8,12 @@ from datetime import datetime
 from typing import Optional
 from dataclasses import asdict
 
-from flask import Flask, render_template, request, jsonify, send_from_directory
+try:
+    from flask import Flask, render_template, request, jsonify, send_from_directory
+    HAS_FLASK = True
+except ImportError:
+    HAS_FLASK = False
+    Flask = None
 
 from .config import Config
 from .extractor import StreamExtractor
