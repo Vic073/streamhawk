@@ -29,7 +29,6 @@ dependencies = [
     "playwright>=1.40.0",
     "yt-dlp>=2023.12.30",
     "aiohttp>=3.9.0",
-    "flask>=2.3.0",
 ]
 
 [project.optional-dependencies]

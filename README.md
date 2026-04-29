@@ -75,36 +75,6 @@ Alternatively, you can run it via Python:
 python -m streamhawk.main
 ```
 
-**Follow the interactive prompts:**
-
-```
-============================================================
-  Project Horizon - HLS Stream Extractor
-============================================================
-
-[?] Paste IMDb URL or ID (e.g., tt0816692 or imdb.com/title/tt0816692): tt0816692
-[+] Extracted IMDb ID: tt0816692
-[*] Target: https://vidsrc.to/embed/movie/tt0816692
-
-[?] Run browser headless? (Y/n, default: Y): Y
-[?] Output filename (optional, press Enter to skip): interstellar.mp4
-
-[*] Starting stream extraction...
-----------------------------------------
-    [*] Navigating to target...
-    [+] HLS manifest captured!
-----------------------------------------
-[+] Stream URL captured
-[*] Headers: Referer=https://vidsrc.to/embed/movie/tt0816692
-
-[?] Start download with yt-dlp? (Y/n): Y
-
-[*] Executing: yt-dlp --referer "..." --user-agent "..." [HLS URL]
-[download] Destination: interstellar.mp4
-...
-[+] Download completed successfully
-```
-
 ---
 
 ## Input Formats
