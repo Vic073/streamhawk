@@ -5,9 +5,6 @@ import asyncio
 import sys
 from pathlib import Path
 
-# Add parent directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from streamhawk import Config, StreamExtractor, YTDLPManager, IMDbClient, logger
 from streamhawk.cli import (
     print_banner, get_imdb_input, confirm_prompt, get_output_filename,
