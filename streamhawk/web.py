@@ -662,7 +662,8 @@ DASHBOARD_HTML = '''
 
 def run_web(host='0.0.0.0', port=8080, debug=False):
     """Run the web dashboard."""
-    app.run(host=host, port=port, debug=debug)
+    application = _init_app()
+    application.run(host=host, port=port, debug=debug)
 
 
 if __name__ == '__main__':
