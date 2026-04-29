@@ -1,3 +1,0 @@
-[console_scripts]
-shawk = streamhawk.main:run
-streamhawk = streamhawk.main:run
