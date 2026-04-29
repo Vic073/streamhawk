@@ -7,7 +7,12 @@ from dataclasses import dataclass
 from typing import List, Optional, Dict, Any
 from urllib.parse import urljoin, urlparse
 
-import aiohttp
+try:
+    import aiohttp
+    HAS_AIOHTTP = True
+except ImportError:
+    HAS_AIOHTTP = False
+    aiohttp = None
 
 
 @dataclass
@@ -82,6 +87,9 @@ class M3U8Parser:
     
     async def parse_from_url(self, url: str) -> 'M3U8Parser':
         """Fetch and parse M3U8 from URL."""
+        if not HAS_AIOHTTP:
+            raise RuntimeError("aiohttp is required for URL parsing. Install: pip install aiohttp")
+        
         async with aiohttp.ClientSession(headers=self.headers) as session:
             async with session.get(url, timeout=30) as response:
                 content = await response.text()
