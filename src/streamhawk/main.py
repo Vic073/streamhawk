@@ -147,51 +147,9 @@ async def process_movie(imdb_id: str, config: Config,
         return False
 
 
-async def main():
+async def main(args, config, history):
     """Main entry point."""
     try:
-        # Parse arguments
-        args = parse_args()
-        
-        # Load or create config
-        config = Config.from_file("config.json")
-        
-        # Setup logging
-        global logger
-        logger = setup_logger(
-            log_dir=config.log_dir,
-            level=config.log_level,
-            save_to_file=config.save_debug_logs
-        )
-        
-        # Initialize history
-        history = HistoryManager() if config.save_history else None
-        
-        # Handle config setup mode
-        if args.config:
-            config = interactive_setup(config)
-            return
-        
-        # Handle history display
-        if args.history:
-            print_history(history)
-            return
-        
-        # Handle batch mode
-        if args.batch:
-            handle_batch_download(args.batch, config)
-            return
-        
-        # Handle web dashboard mode
-        if args.web:
-            print(f"[*] Starting web dashboard on http://localhost:{args.port}")
-            from .web import run_web
-            run_web(host='0.0.0.0', port=args.port, debug=False)
-            return
-        
-        # Print banner for interactive modes
-        print_banner()
-        
         # Override config with CLI args
         if args.headful:
             config.headless = False
@@ -228,7 +186,49 @@ async def main():
 def run():
     """Sync wrapper for async main."""
     try:
-        asyncio.run(main())
+        # Parse arguments
+        args = parse_args()
+        
+        # Load or create config
+        config = Config.from_file("config.json")
+        
+        # Setup logging
+        global logger
+        logger = setup_logger(
+            log_dir=config.log_dir,
+            level=config.log_level,
+            save_to_file=config.save_debug_logs
+        )
+        
+        # Initialize history
+        history = HistoryManager() if config.save_history else None
+        
+        # Handle config setup mode
+        if args.config:
+            interactive_setup(config)
+            return
+        
+        # Handle history display
+        if args.history:
+            print_history(history)
+            return
+        
+        # Handle batch mode
+        if args.batch:
+            handle_batch_download(args.batch, config)
+            return
+        
+        # Handle web dashboard mode
+        if args.web:
+            print(f"[*] Starting web dashboard on http://localhost:{args.port}")
+            from .web import run_web
+            run_web(host='0.0.0.0', port=args.port, debug=False)
+            return
+        
+        # Print banner for interactive modes
+        print_banner()
+        
+        asyncio.run(main(args, config, history))
     except KeyboardInterrupt:
         pass
 
