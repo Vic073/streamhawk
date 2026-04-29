@@ -64,3 +64,5 @@ docs/_build/
 # Temporary files
 *.tmp
 *.temp
+
+streamhawk.egg-info/

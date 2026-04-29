@@ -9,7 +9,7 @@ from typing import Optional
 from dataclasses import asdict
 
 try:
-    from flask import Flask, render_template, request, jsonify, send_from_directory
+    from flask import Flask, render_template, render_template_string, request, jsonify, send_from_directory
     HAS_FLASK = True
 except ImportError:
     HAS_FLASK = False
@@ -35,6 +35,11 @@ def _register_routes():
     def index():
         """Main dashboard page."""
         return render_template_string(DASHBOARD_HTML)
+    
+    @app.route('/favicon.ico')
+    def favicon():
+        """Empty favicon to prevent 404s."""
+        return '', 204
     
     @app.route('/api/extract', methods=['POST'])
     def api_extract():
