@@ -1,0 +1,66 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Downloads (user data)
+downloads/*.mp4
+downloads/*.mkv
+downloads/*.ts
+logs/*.log
+
+# Config (user-specific)
+config.json
+config.local.json
+
+# History
+history.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation build
+docs/_build/
+
+# Temporary files
+*.tmp
+*.temp
