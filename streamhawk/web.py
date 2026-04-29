@@ -21,12 +21,26 @@ from .downloader import YTDLPManager, DownloadProgress
 from .imdb import IMDbClient
 from .utils import extract_imdb_id, HistoryManager
 
-app = Flask(__name__)
-
-# Global state
-config = Config()
-history = HistoryManager() if config.save_history else None
+app = None
+config = None
+history = None
 active_downloads = {}
+
+def _init_app():
+    """Initialize Flask app and state."""
+    global app, config, history, active_downloads
+    
+    if not HAS_FLASK:
+        raise RuntimeError("Flask is required for web dashboard. Install: pip install flask")
+    
+    if app is None:
+        app = Flask(__name__)
+        config = Config()
+        history = HistoryManager() if config.save_history else None
+        active_downloads = {}
+        _register_routes()
+    
+    return app
 
 
 def get_download_dir():
