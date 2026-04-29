@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "streamhawk"
+version = "2.0.0"
+description = "Automated HLS Stream Extractor with yt-dlp integration"
+readme = "README.md"
+authors = [
+    { name = "Project Horizon" }
+]
+license = { text = "MIT" }
+keywords = ["hls", "m3u8", "video", "download", "yt-dlp", "imdb", "streaming"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Internet :: WWW/HTTP",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.40.0",
+    "yt-dlp>=2023.12.30",
+    "aiohttp>=3.9.0",
+    "flask>=2.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+"Bug Reports" = "https://github.com/Vic073/streamhawk/issues"
+"Source" = "https://github.com/Vic073/streamhawk"
+
+[project.scripts]
+streamhawk = "streamhawk.main:main"
+shawk = "streamhawk.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
