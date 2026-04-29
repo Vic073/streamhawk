@@ -61,7 +61,8 @@ class M3U8Audio:
     name: str
     url: Optional[str] = None
     group_id: Optional[str] = None
-    default: bool = Falsen    codec: Optional[str] = None
+    default: bool = False
+    codec: Optional[str] = None
 
 
 class M3U8Parser:
