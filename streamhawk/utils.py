@@ -25,8 +25,12 @@ class ColoredFormatter(logging.Formatter):
     def format(self, record):
         log_color = self.COLORS.get(record.levelname, self.COLORS['RESET'])
         reset = self.COLORS['RESET']
-        record.levelname = f"{log_color}{record.levelname}{reset}"
-        return super().format(record)
+        original_levelname = record.levelname
+        try:
+            record.levelname = f"{log_color}{original_levelname}{reset}"
+            return super().format(record)
+        finally:
+            record.levelname = original_levelname
 
 
 def setup_logger(name: str = "streamhawk", log_dir: Optional[str] = None, 
