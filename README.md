@@ -39,18 +39,16 @@ git clone https://github.com/Vic073/streamhawk.git
 cd streamhawk
 ```
 
-2. **Install Python dependencies:**
+2. **Install the package:**
 ```bash
-pip install playwright
+pip install .
+```
+This will automatically install all core dependencies including Playwright, yt-dlp, and Flask.
+
+3. **Install browser binaries:**
+```bash
 playwright install chromium
 ```
-
-3. **Install yt-dlp:**
-```bash
-pip install yt-dlp
-```
-
-Or download directly from [yt-dlp releases](https://github.com/yt-dlp/yt-dlp/releases).
 
 4. **Install ffmpeg** (optional but recommended):
 - Windows: `choco install ffmpeg` or download from [ffmpeg.org](https://ffmpeg.org/download.html)
@@ -61,10 +59,20 @@ Or download directly from [yt-dlp releases](https://github.com/yt-dlp/yt-dlp/rel
 
 ## Usage
 
-Run the script from your terminal:
+You can run the tool using the command-line entry points:
 
 ```bash
-python streamhawk.py
+streamhawk
+```
+or
+```bash
+shawk
+```
+
+Alternatively, you can run it via Python:
+
+```bash
+python -m streamhawk.main
 ```
 
 **Follow the interactive prompts:**

@@ -1,160 +1,87 @@
 # StreamHawk v2.0 - Project Summary
 
-## Complete Modular Architecture
+## Modern Modular Architecture
 
-### Core Modules (16 files)
+The project follows a standard `src/` layout with a consolidated configuration system.
 
-| Module | Purpose | Lines | Features |
-|--------|---------|-------|----------|
-| `streamhawk.py` | Entry point | 18 | CLI launcher |
-| `config.py` | Configuration | 87 | JSON config, proxy, quality settings |
-| `browser.py` | Stealth browser | 298 | Anti-detection, popups, proxy support |
-| `extractor.py` | Stream extraction | 228 | HLS capture, retry logic, quality selection |
-| `downloader.py` | yt-dlp manager | 347 | Resume, progress, subtitles |
-| `imdb.py` | Metadata fetch | 226 | API + web scraping |
-| `m3u8_parser.py` | Playlist parser | 302 | Quality parsing, variants |
-| `subtitles.py` | Subtitle handling | 270 | VTT/SRT, embed, burn |
-| `postprocessor.py` | Video processing | 347 | ffmpeg, HEVC, compression |
-| `fingerprints.py` | Anti-detection | 268 | Fingerprint spoofing |
-| `notifications.py` | Alerts | 96 | Desktop, webhook |
-| `utils.py` | Utilities | 178 | Logging, history, helpers |
-| `cli.py` | Interactive CLI | 274 | Prompts, batch, config wizard |
-| `main.py` | Application | 232 | Main logic |
-| `web.py` | Dashboard | 374 | Flask web UI |
-| `__init__.py` | Package exports | 43 | All 23 exports |
+### Core Modules (`src/streamhawk/`)
+
+| Module | Purpose | Features |
+|--------|---------|----------|
+| [main.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/main.py) | Application Entry | Core logic orchestration |
+| [metadata.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/metadata.py) | Metadata Fetch | IMDb scraping and API integration |
+| [hls.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/hls.py) | Playlist Parser | HLS manifest analysis and quality selection |
+| [browser.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/browser.py) | Stealth Browser | Anti-detection, ad-blocking, proxy support |
+| [extractor.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/extractor.py) | Stream Capture | Network interception and HLS discovery |
+| [downloader.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/downloader.py) | yt-dlp Manager | Multi-threaded downloads and resume support |
+| [config.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/config.py) | Configuration | Dataclass-based settings management |
+| [cli.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/cli.py) | Terminal UI | Interactive prompts and batch processing |
+| [web.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/web.py) | Dashboard | Flask-based web interface |
+| [notifications.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/notifications.py) | Alerts | Desktop and webhook notifications |
+| [utils.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/utils.py) | Utilities | Logging, history, and string helpers |
+| [__init__.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/src/streamhawk/__init__.py) | Package Exports | Clean public API definition |
 
 ### Testing Suite
 
-- `tests/test_config.py` - Configuration tests
-- `tests/test_utils.py` - Utility function tests
-- `tests/test_m3u8_parser.py` - Parser tests
+- [test_config.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/tests/test_config.py) - Configuration validation
+- [test_utils.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/tests/test_utils.py) - Utility logic tests
+- [test_hls.py](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/tests/test_hls.py) - HLS manifest parsing tests
 
 ### Docker Support
 
-- `Dockerfile` - Multi-stage production/dev builds
-- `docker-compose.yml` - Service orchestration
 - `.dockerignore` - Build optimization
+- `Dockerfile` - Multi-stage container builds
+- `docker-compose.yml` - Local service orchestration
 
-### Configuration
+### Configuration & Deployment
 
-- `config.json` - Default settings
-- `requirements.txt` - Dependencies
-- `setup.py` - Package installer
+- `config.json` - Default runtime settings
+- [pyproject.toml](file:///c:/Users/Victor%20Chilomo/OneDrive/Desktop/New%20folder/pyproject.toml) - Modern build system and dependency management
 
-### Documentation
+### Documentation & Assets
 
-- `README.md` - Full documentation
-- `movies.txt` - Batch file example
-- `PROJECT_SUMMARY.md` - This file
+- `README.md` - Getting started guide
+- `PROJECT_SUMMARY.md` - Technical overview
+- `movies.txt` - Batch processing template
 
 ## Features Implemented
 
 ### 1. Stream Extraction
-- HLS .m3u8 detection and capture
-- Network request interception
-- Automatic retry with exponential backoff
-- Master playlist parsing
-- Quality variant selection
+- Automated HLS .m3u8 discovery
+- Network traffic interception with predicate filtering
+- Quality-aware manifest parsing
+- Automatic header preservation (Referer, User-Agent)
 
 ### 2. Download Management
-- yt-dlp integration
-- Resume interrupted downloads
-- Progress tracking with callbacks
-- Parallel fragment downloads
-- Header preservation (Referer, User-Agent)
+- Native yt-dlp integration
+- Automatic download resumption
+- Real-time progress tracking
+- Custom output templates
 
-### 3. Anti-Detection
-- WebDriver masking
-- Chrome runtime emulation
-- Canvas fingerprint noise
-- WebRTC IP hiding
-- Font spoofing
-- Plugin list spoofing
-- Timezone/screen randomization
-- Hardware profile spoofing
+### 3. Anti-Detection & Stealth
+- WebDriver property masking
+- Chrome runtime API emulation
+- Ad-popup auto-suppression
+- Custom User-Agent rotation
 
-### 4. Metadata
-- IMDb data fetching (API + scraper)
-- Auto-filename generation
-- Poster, rating, plot extraction
-- Cache system
-
-### 5. Post-Processing
-- HEVC/H.265 conversion
-- Web compression
-- Thumbnail extraction
-- Audio extraction
-- Video trimming
-- Subtitle embedding/burning
-- Format conversion
-
-### 6. Subtitle Management
-- VTT download and conversion
-- SRT format output
-- Subtitle embedding
-- Hardcoded subtitle burning
-- Auto-extraction from video
-
-### 7. User Interface
-- Interactive terminal prompts
-- Colored logging
-- Progress bars
-- Configuration wizard
-- Batch processing
-- Web dashboard (Flask)
-
-### 8. Infrastructure
-- JSON configuration
-- Download history (SQLite-like JSON)
-- Desktop notifications
-- Webhook alerts
-- Proxy support (HTTP/SOCKS5)
-- Rotating proxies
-
-### 9. Deployment
-- Docker containerization
-- Docker Compose setup
-- pip installable package
-- CLI entry points
+### 4. User Experience
+- Interactive CLI with colored output
+- Web dashboard for remote monitoring
+- Desktop notifications for completion/failure
+- History tracking for past extractions
 
 ## Usage Examples
 
 ```bash
-# Interactive mode
-python streamhawk.py
+# Direct command (if installed via pip)
+streamhawk --imdb tt0816692
 
-# Direct download
-python streamhawk.py --imdb tt0816692 -o Interstellar.mp4
+# Via Python module
+python -m streamhawk.main --imdb tt0816692
 
 # Web dashboard
-python streamhawk.py --web --port 8080
-
-# Batch processing
-python streamhawk.py --batch movies.txt
-
-# Configuration setup
-python streamhawk.py --config
-
-# URL only (no download)
-python streamhawk.py --imdb tt0816692 --no-download
-
-# Show history
-python streamhawk.py --history
-
-# Docker
-docker-compose up streamhawk
+streamhawk --web --port 8080
 ```
-
-## Repository
-
-https://github.com/Vic073/streamhawk
-
-## Total Lines of Code
-
-- Python source: ~3,500 lines
-- Documentation: ~500 lines
-- Configuration: ~100 lines
-- **Total: ~4,100 lines**
 
 ## Module Dependencies
 
@@ -165,24 +92,19 @@ main.py
   │   └─ utils.py
   ├─ extractor.py
   │   ├─ browser.py
-  │   │   └─ fingerprints.py
   │   ├─ config.py
-  │   └─ m3u8_parser.py
+  │   └─ hls.py
   ├─ downloader.py
   │   ├─ config.py
   │   └─ utils.py
-  ├─ imdb.py
-  ├─ postprocessor.py
-  ├─ subtitles.py
+  ├─ metadata.py
   ├─ notifications.py
   └─ utils.py
 ```
 
-## Next Steps for Development
+## Maintenance & Standards
 
-1. Add more test coverage
-2. Implement translation API
-3. Add more streaming sources
-4. Create plugin system
-5. Add analytics dashboard
-6. Implement distributed downloading
+- **PEP 517/518 Compliance**: Uses `pyproject.toml` for builds.
+- **Source Layout**: Adheres to the standard `src/` directory pattern.
+- **Testing**: Automated test suite with `pytest`.
+- **Clean Code**: Removed redundant modules (fingerprints, postprocessor, subtitles) to maintain a lean core.
