@@ -12,6 +12,7 @@ from .extractor import StreamExtractor
 from .downloader import YTDLPManager
 from .imdb import IMDbClient
 from .utils import logger
+from .notifications import NotificationManager
 
 __all__ = [
     "Config",
@@ -19,4 +20,5 @@ __all__ = [
     "YTDLPManager",
     "IMDbClient",
     "logger",
+    "NotificationManager",
 ]

@@ -1,0 +1,14 @@
+# Sample batch file for StreamHawk
+# Add one IMDb ID or URL per line
+# Lines starting with # are ignored
+
+# Interstellar (2014)
+tt0816692
+
+# The Dark Knight (2008)
+# https://www.imdb.com/title/tt0468569/
+
+# Inception (2010)
+# tt1375666
+
+# Add more movies below...
