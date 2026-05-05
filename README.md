@@ -184,4 +184,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Disclaimer
 
-> This project is intended for educational purposes only. The authors do not condone or encourage any illegal activities, including copyright infringement. Users are responsible for ensuring their use of this software complies with all applicable laws and regulations in their jurisdiction.
+> This project is intended for educational purposes only. The author do not condone or encourage any illegal activities, including copyright infringement. Users are responsible for ensuring their use of this software complies with all applicable laws and regulations in their jurisdiction.
