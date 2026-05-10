@@ -52,16 +52,17 @@ FROM base as production
 
 WORKDIR /app
 
-# Copy requirements first for better caching
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy pyproject.toml for dependency installation
+COPY pyproject.toml .
+
+# Install Python dependencies using modern pyproject.toml
+RUN pip install --no-cache-dir -e .
 
 # Install Playwright browsers
 RUN playwright install chromium
 
 # Copy application code
-COPY streamhawk/ ./streamhawk/
-COPY streamhawk.py .
+COPY src/ ./src/
 COPY config.json .
 COPY README.md .
 
@@ -75,8 +76,8 @@ ENV STREAMHAWK_DOWNLOAD_DIR=/downloads
 # Volume for downloads
 VOLUME ["/downloads"]
 
-# Default command
-ENTRYPOINT ["python", "streamhawk.py"]
+# Default command - use installed entry point
+ENTRYPOINT ["streamhawk"]
 CMD ["--help"]
 
 # Development stage
@@ -84,14 +85,17 @@ FROM base as development
 
 WORKDIR /app
 
-# Install additional dev dependencies
-RUN pip install pytest pytest-asyncio black flake8
+# Install dev dependencies
+RUN pip install pytest pytest-asyncio pytest-cov black ruff bandit safety
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-RUN playwright install chromium
-
+# Copy all project files
 COPY . .
 
+# Install package in development mode
+RUN pip install --no-cache-dir -e ".[dev]"
+
+# Install Playwright browsers
+RUN playwright install chromium
+
 # Run tests by default in dev mode
-CMD ["pytest", "-v"]
+CMD ["pytest", "-v", "--cov=src", "--cov-report=term-missing"]
